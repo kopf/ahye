@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#Copyright 2011 Aengus Walton <aengus.walton@edelight.de>
+#Copyright 2011 Aengus Walton <ventolin@gmail.com>
 
 from flask import Flask
 
