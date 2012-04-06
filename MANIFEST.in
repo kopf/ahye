@@ -1,3 +1,0 @@
-include ahye/config/deployment.ini_tmpl
-recursive-include ahye/public *
-recursive-include ahye/templates *
