@@ -1,7 +1,6 @@
 import os
 
 from flask import request, send_from_directory
-from werkzeug import secure_filename
 
 from ahye.settings import SERVER, LOCAL_UPLOADS_DIR
 from ahye.lib import get_filename
