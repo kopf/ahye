@@ -18,3 +18,6 @@ def upload():
 def serve_upload(filename):
     return send_from_directory(LOCAL_UPLOADS_DIR, filename)
 
+@app.route('/favicon.ico')
+def serve_favicon():
+    return send_from_directory(os.path.join(LOCAL_UPLOADS_DIR, '..'), 'favicon.ico')
