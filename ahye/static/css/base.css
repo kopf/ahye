@@ -1,0 +1,23 @@
+body {
+    overflow-x: hidden;
+}
+
+#logo {
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-310px; /* half the height */
+    margin-left:-439px; /* half the width */
+    opacity: 1;
+}
+
+#subtext {
+    position:absolute;
+    text-align: center;
+    width: 100%;
+    top:50%;
+    margin-top:250px; /* half the height */
+    opacity: 1;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 4em;
+}
