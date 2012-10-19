@@ -21,7 +21,6 @@
 
 <%def name="head_css()">
     <link rel="stylesheet" type="text/css" href="${url_for('static', filename='css/base.css')}" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
 </%def>
 
 <%def name="head_js()">
