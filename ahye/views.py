@@ -1,12 +1,20 @@
 import os
+import json
 
-from flask import (abort, redirect, request,
+from flask import (abort, redirect, request, jsonify,
                    send_from_directory, url_for)
 import requests
 
-from ahye.settings import VDIR, LOCAL_UPLOADS_DIR
-from ahye.lib import generate_filename
 from ahye import app
+from ahye.flaskext.mako import render_template as render
+from ahye.lib import generate_filename
+from ahye.settings import VDIR, LOCAL_UPLOADS_DIR
+
+
+@app.route('/', methods=['GET'])
+def home():
+    return render('/home.mako')
+
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -16,9 +24,27 @@ def upload():
     return url_for('serve_upload', filename=filename, _external=True)
 
 
+@app.route('/webupload', methods=['POST'])
+def webupload():
+    retval = []
+    for newimg in request.files.getlist('files[]'):
+        filename = generate_filename()
+        newimg.save(os.path.join(LOCAL_UPLOADS_DIR, filename))
+        retval.append({
+            "name":filename,
+            "size":0,
+            "url":"/{0}/{1}".format(VDIR, filename),
+            "thumbnail_url":"/blah.jpg",
+            "delete_url":"/blah",
+            "delete_type":"DELETE"
+        })
+    return json.dumps(retval)
+
+
 @app.route('/%s/<filename>' % VDIR)
 def serve_upload(filename):
     return send_from_directory(LOCAL_UPLOADS_DIR, filename)
+
 
 @app.route('/<path:url>')
 def crossload(url):
