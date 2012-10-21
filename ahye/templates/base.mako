@@ -49,11 +49,11 @@
             done: function (e, data) {
                 var html = '<div class="results">';
                 $.each(data.result, function (index, file) {
-                    html += '<div class="file">'
-                    html += '<a href="'+file.url+'" target="_blank">'+file.name+'</a>'
-                    html += '</div>'
+                    html += '<div class="file">';
+                    html += '<a href="'+file.url+'" target="_blank">'+file.name+'</a>';
+                    html += '</div>';
                 });
-                html += '</div>'
+                html += '</div>';
                 var logodiv = $('#screen');
                 logodiv.addClass('showing_results');
                 logodiv.html(html);
