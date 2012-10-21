@@ -1,6 +1,7 @@
 import os
+import json
 
-from flask import (abort, redirect, request,
+from flask import (abort, redirect, request, jsonify,
                    send_from_directory, url_for)
 import requests
 
@@ -21,6 +22,23 @@ def upload():
     filename = generate_filename()
     data.save(os.path.join(LOCAL_UPLOADS_DIR, filename))
     return url_for('serve_upload', filename=filename, _external=True)
+
+
+@app.route('/webupload', methods=['POST'])
+def webupload():
+    retval = []
+    for newimg in request.files.getlist('files[]'):
+        filename = generate_filename()
+        newimg.save(os.path.join(LOCAL_UPLOADS_DIR, filename))
+        retval.append({
+            "name":filename,
+            "size":0,
+            "url":"/{0}/{1}".format(VDIR, filename),
+            "thumbnail_url":"/blah.jpg",
+            "delete_url":"/blah",
+            "delete_type":"DELETE"
+        })
+    return json.dumps(retval)
 
 
 @app.route('/%s/<filename>' % VDIR)
