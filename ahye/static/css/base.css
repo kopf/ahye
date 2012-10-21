@@ -62,3 +62,28 @@ body {
 #fileupload {
     display: none;
 }
+
+#progress {
+    display: none;
+}
+
+#progress.active {
+    font-size:72pt;
+    font-family: RobotoRegular;
+    display:block;
+    position:absolute;
+    line-height:50px;
+    top:50%;
+    left:50%;
+    margin:-70px 0 0 -315px;
+    text-shadow:3px 3px 4px #000;
+    color:#fff;
+    z-index:999;
+}
+
+.fade {
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}

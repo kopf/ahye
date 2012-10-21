@@ -17,6 +17,7 @@
             ${self.body_footer()}
         </div>
         ${self.footer_js()}
+        <div id="progress"></div>
     </body>
 </html>
 
@@ -47,6 +48,8 @@
             dataType: 'json',
             singleFileUploads: false,
             done: function (e, data) {
+                $('#progress').removeClass('active');
+                $('#screen').css({ opacity: 1 });
                 var html = '<div class="results">';
                 $.each(data.result, function (index, file) {
                     html += '<div class="file">';
@@ -59,6 +62,14 @@
                 var logodiv = $('#screen');
                 logodiv.addClass('showing_results');
                 logodiv.html(html);
+            },
+            progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress').addClass('active');
+                $('#screen').css({ opacity: 0.1 });
+                $('#progress').html(
+                    'uploading: ' + progress + '%'
+                );
             }
         });
     });
