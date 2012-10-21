@@ -52,9 +52,11 @@ body {
     color: #9d9d9d;
     font-weight: bold;
 }
-
 .file a:hover {
     color: #fff;
+}
+.file img {
+    margin-right: 30px;
 }
 
 #fileupload {

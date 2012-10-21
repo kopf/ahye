@@ -50,7 +50,9 @@
                 var html = '<div class="results">';
                 $.each(data.result, function (index, file) {
                     html += '<div class="file">';
-                    html += '<a href="'+file.url+'" target="_blank">'+file.name+'</a>';
+                    html += '<a href="'+file.url+'" target="_blank">';
+                    html += '<img src="'+file.url+'" width="40px" height="40px"/>'
+                    html += file.name+'</a>';
                     html += '</div>';
                 });
                 html += '</div>';
