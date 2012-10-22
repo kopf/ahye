@@ -51,11 +51,11 @@ def serve_upload(filename):
 def crossload(url):
     if not url.endswith(('.jpg', '.png', '.jpeg', '.gif')):
         abort(400)
-        
+
     # rewrite url as apache's mod_rewrite converts // to /
     if not url.startswith('http://') and url.startswith('http:/'):
         url = url.replace('http:/', 'http://')
-    elif not url.startswith('https://') and url.startswith('https:/')
+    elif not url.startswith('https://') and url.startswith('https:/'):
         url = url.replace('https:/', 'https://')
 
     filename = '%s.png' % uuid.uuid3(uuid.NAMESPACE_DNS, str(url))
