@@ -8,7 +8,7 @@ import requests
 
 from ahye import app
 from ahye.flaskext.mako import render_template as render
-from ahye.lib import generate_filename
+from ahye.lib import generate_filename, get_file_extension, guess_file_extension
 from ahye.settings import VDIR, LOCAL_UPLOADS_DIR
 
 
@@ -20,7 +20,7 @@ def home():
 @app.route('/upload', methods=['POST'])
 def upload():
     data = request.files['imagedata']
-    filename = generate_filename()
+    filename = generate_filename(data)
     data.save(os.path.join(LOCAL_UPLOADS_DIR, filename))
     return url_for('serve_upload', filename=filename, _external=True)
 
@@ -29,8 +29,10 @@ def upload():
 def webupload():
     retval = []
     for newimg in request.files.getlist('files[]'):
-        filename = generate_filename()
-        newimg.save(os.path.join(LOCAL_UPLOADS_DIR, filename))
+        data = newimg.stream.read()
+        filename = generate_filename(data)
+        with open(os.path.join(LOCAL_UPLOADS_DIR, filename), 'w') as f:
+            f.write(data)
         retval.append({
             "name":filename,
             "size":0,
@@ -59,7 +61,8 @@ def crossload(url):
     elif url.startswith('https:/') and not url.startswith('https://'):
         url = url.replace('https:/', 'https://')
 
-    filename = '%s.png' % uuid.uuid3(uuid.NAMESPACE_DNS, str(url))
+    filename = '%s%s' % (uuid.uuid3(uuid.NAMESPACE_DNS, str(url)),
+                         guess_file_extension(url))
     if not os.path.exists(os.path.join(LOCAL_UPLOADS_DIR, filename)):
         conn = requests.get(url)
         if 200 <= conn.status_code <= 300:
