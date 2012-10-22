@@ -1,6 +1,6 @@
-import base64
 import os
 import json
+import uuid
 
 from flask import (abort, redirect, request, jsonify,
                    send_from_directory, url_for)
@@ -51,7 +51,7 @@ def serve_upload(filename):
 def crossload(url):
     if not url.endswith(('.jpg', '.png', '.jpeg', '.gif')):
         abort(400)
-    filename = base64.b64encode(url) + '.png'
+    filename = uuid.uuid3(uuid.NAMESPACE_DNS, url) + '.png'
     if not os.path.exists(os.path.join(LOCAL_UPLOADS_DIR, filename)):
         conn = requests.get(url)
         if 200 <= conn.status_code <= 300:
