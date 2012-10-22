@@ -51,6 +51,9 @@ def serve_upload(filename):
 def crossload(url):
     if not url.endswith(('.jpg', '.png', '.jpeg', '.gif')):
         abort(400)
+    if not url.startswith('http://') and url.startswith('http:/'):
+        # rewrite url as apache's mod_rewrite converts // to /
+        url = url.replace('http:/', 'http://')
     filename = '%s.png' % uuid.uuid3(uuid.NAMESPACE_DNS, str(url))
     if not os.path.exists(os.path.join(LOCAL_UPLOADS_DIR, filename)):
         conn = requests.get(url)
