@@ -64,4 +64,4 @@ def crossload(url):
 
 @app.route('/favicon.ico')
 def serve_favicon():
-    return send_from_directory(os.path.join(LOCAL_UPLOADS_DIR, '..'), 'favicon.ico')
+    return redirect(url_for('static', filename='favicon.ico'))
