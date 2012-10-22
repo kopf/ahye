@@ -1,3 +1,4 @@
+import base64
 import os
 import json
 
@@ -50,14 +51,15 @@ def serve_upload(filename):
 def crossload(url):
     if not url.endswith(('.jpg', '.png', '.jpeg', '.gif')):
         abort(400)
-    conn = requests.get(url)
-    if 200 <= conn.status_code <= 300:
-        filename = generate_filename()
-        with open(os.path.join(LOCAL_UPLOADS_DIR, filename), 'w') as f:
-            f.write(conn.content)
-        return redirect(url_for('serve_upload', filename=filename, _external=True))
-    else:
-        abort(conn.status_code)
+    filename = base64.b46encode(url) + '.png'
+    if not os.path.exists(os.path.join(LOCAL_UPLOADS_DIR, filename)):
+        conn = requests.get(url)
+        if 200 <= conn.status_code <= 300:
+            with open(os.path.join(LOCAL_UPLOADS_DIR, filename), 'w') as f:
+                f.write(conn.content)
+        else:
+            abort(conn.status_code)
+    return redirect(url_for('serve_upload', filename=filename, _external=True))
 
 
 @app.route('/favicon.ico')
