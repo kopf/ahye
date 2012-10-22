@@ -49,13 +49,14 @@ def serve_upload(filename):
 
 @app.route('/<path:url>')
 def crossload(url):
-    if not url.endswith(('.jpg', '.png', '.jpeg', '.gif')):
-        abort(400)
+    # reconstruct url (query string has been stripped from url by flask)
+    if request.query_string:
+        url = '%s?%s' % (url, request.query_string)
 
     # rewrite url as apache's mod_rewrite converts // to /
-    if not url.startswith('http://') and url.startswith('http:/'):
+    if url.startswith('http:/') and not url.startswith('http://'):
         url = url.replace('http:/', 'http://')
-    elif not url.startswith('https://') and url.startswith('https:/'):
+    elif url.startswith('https:/') and not url.startswith('https://'):
         url = url.replace('https:/', 'https://')
 
     filename = '%s.png' % uuid.uuid3(uuid.NAMESPACE_DNS, str(url))
