@@ -20,7 +20,7 @@ def home():
 @app.route('/upload', methods=['POST'])
 def upload():
     data = request.files['imagedata']
-    filename = generate_filename(data)
+    filename = generate_filename(data, detect_extension=False)
     data.save(os.path.join(LOCAL_UPLOADS_DIR, filename))
     return url_for('serve_upload', filename=filename, _external=True)
 

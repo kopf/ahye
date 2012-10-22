@@ -6,11 +6,15 @@ import string
 from ahye.settings import LOCAL_UPLOADS_DIR
 
 
-def generate_filename(image_data):
+def generate_filename(image_data, detect_extension=True):
     alphanum = string.ascii_letters + string.digits
     retval = ''
     while not retval or os.path.exists(os.path.join(LOCAL_UPLOADS_DIR, retval)): 
-        retval = ''.join(random.sample(alphanum, 8)) + get_file_extension(image_data)
+        retval = ''.join(random.sample(alphanum, 8))
+        if detect_extension:
+            retval += get_file_extension(image_data)
+        else:
+            retval += '.png'
     return retval
 
 def get_file_extension(image_data):
