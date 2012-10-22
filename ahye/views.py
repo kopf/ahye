@@ -51,7 +51,7 @@ def serve_upload(filename):
 def crossload(url):
     if not url.endswith(('.jpg', '.png', '.jpeg', '.gif')):
         abort(400)
-    filename = base64.b46encode(url) + '.png'
+    filename = base64.b64encode(url) + '.png'
     if not os.path.exists(os.path.join(LOCAL_UPLOADS_DIR, filename)):
         conn = requests.get(url)
         if 200 <= conn.status_code <= 300:
