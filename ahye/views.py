@@ -1,5 +1,6 @@
 import os
 import json
+import urlparse
 import uuid
 
 from flask import (abort, redirect, request, jsonify,
@@ -63,8 +64,12 @@ def crossload(url):
 
     filename = '%s%s' % (uuid.uuid3(uuid.NAMESPACE_DNS, str(url)),
                          guess_file_extension(url))
+
+    parsed_url = urlparse.urlparse(url)
+    auth = (parsed_url.username, parsed_url.password)
+
     if not os.path.exists(os.path.join(LOCAL_UPLOADS_DIR, filename)):
-        conn = requests.get(url)
+        conn = requests.get(url, auth=auth, verify=False)
         if 200 <= conn.status_code <= 300:
             with open(os.path.join(LOCAL_UPLOADS_DIR, filename), 'w') as f:
                 f.write(conn.content)
