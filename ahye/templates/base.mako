@@ -53,7 +53,7 @@
             done: function (e, data) {
                 $('#progress').removeClass('active');
                 $('#screen').css({ opacity: 1 });
-                var html = '<div class="results">';
+                var html = '<div class="text_container">';
                 $.each(data.result, function (index, file) {
                     html += '<div class="file">';
                     html += '<a href="'+file.url+'" target="_blank">';
@@ -63,7 +63,7 @@
                 });
                 html += '</div>';
                 var logodiv = $('#screen');
-                logodiv.addClass('showing_results');
+                logodiv.addClass('blank');
                 logodiv.html(html);
             },
             progressall: function (e, data) {

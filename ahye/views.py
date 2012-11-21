@@ -74,7 +74,7 @@ def crossload(url):
             with open(os.path.join(LOCAL_UPLOADS_DIR, filename), 'w') as f:
                 f.write(conn.content)
         else:
-            abort(conn.status_code)
+            return render('/error.mako', code=conn.status_code)
     return redirect(url_for('serve_upload', filename=filename, _external=True))
 
 

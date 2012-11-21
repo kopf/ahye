@@ -26,37 +26,51 @@ body {
     height: 826px;
 }
 
-#screen.showing_results {
+#screen.blank {
     background: url('/static/img/blank_screen.png') !important;
 }
 
-#screen .results {
+#screen .text_container {
     margin-top: 150px;
     margin-left: 210px;
     max-height: 510px;
     max-width: 772px;
     overflow-x: hidden;
     overflow-y: auto;
+    font-family: RobotoRegular;
+    font-weight: bold;
+    font-size: 44px;
+    color: #9d9d9d;
 }
 
-#screen .results .file {
+#screen .text_container .file {
     width: 777px;
     height: 50px;
     margin-top: 12px;
-    font-family: RobotoRegular;
-    font-size: 44px;
     border-bottom: 2px #333 solid;
 }
-.file a, .file a:visited, .file a:active {
+#screen a, #screen a:visited, #screen a:active {
     text-decoration: none;
     color: #9d9d9d;
-    font-weight: bold;
 }
-.file a:hover {
+#screen a:hover {
     color: #fff;
 }
-.file img {
+#screen .file img {
     margin-right: 30px;
+}
+
+#screen .error_msg,
+#screen .error_code {
+    text-align: center;
+}
+#screen .error_msg {
+    font-size: 52px !important;
+}
+#screen .error_code {
+    margin: 80px 0;
+    color: #A5A7D1 !important;
+    font-size: 200px !important;
 }
 
 #fileupload {
