@@ -69,12 +69,27 @@ def crossload(url):
     auth = (parsed_url.username, parsed_url.password)
 
     if not os.path.exists(os.path.join(LOCAL_UPLOADS_DIR, filename)):
-        conn = requests.get(url, auth=auth, verify=False)
+        try:
+            conn = requests.get(url, auth=auth, verify=False)
+        except requests.exceptions.ConnectionError:
+            return render('/error.mako',
+                          error={'msgs': ['Connection to server failed.', 'Is it a valid domain?']})
+        except (requests.exceptions.InvalidSchema,
+                requests.exceptions.MissingSchema,
+                requests.exceptions.InvalidURL):
+            return render('/error.mako',
+                          error={'msgs': ['Invalid URL.', 'Please check and try again.']})
+        except requests.exceptions.Timeout:
+            return render('/error.mako',
+                          error={'msgs': ['Connection to server timed out.']})
+        except Exception:
+            return render('/error.mako')
+
         if 200 <= conn.status_code <= 300:
             with open(os.path.join(LOCAL_UPLOADS_DIR, filename), 'w') as f:
                 f.write(conn.content)
         else:
-            return render('/error.mako', code=conn.status_code)
+            return render('/error.mako', error={'code': conn.status_code})
     return redirect(url_for('serve_upload', filename=filename, _external=True))
 
 
