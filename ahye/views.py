@@ -73,12 +73,14 @@ def crossload(url):
             conn = requests.get(url, auth=auth, verify=False)
         except requests.exceptions.ConnectionError:
             return render('/error.mako',
-                          error={'msgs': ['Connection to server failed.', 'Is it a valid domain?']})
+                          error={'msgs': ['Connection to server failed.',
+                                          'Is it a valid domain?']})
         except (requests.exceptions.InvalidSchema,
                 requests.exceptions.MissingSchema,
                 requests.exceptions.InvalidURL):
             return render('/error.mako',
-                          error={'msgs': ['Invalid URL.', 'Please check and try again.']})
+                          error={'msgs': ['Invalid URL.',
+                                          'Please check and try again.']})
         except requests.exceptions.Timeout:
             return render('/error.mako',
                           error={'msgs': ['Connection to server timed out.']})
