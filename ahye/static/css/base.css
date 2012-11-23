@@ -14,6 +14,24 @@ body {
     background-image: url('/static/img/background.png');
 }
 
+.hidden {
+    display: none;
+}
+
+.mirror_helplink {
+    font-family: RobotoRegular;
+    font-weight: bold;
+    font-size: 44px;
+    margin-top: 720px;
+    margin-left: 385px;
+    color: #9d9d9d;
+}
+
+.mirror_help {
+    font-family: RobotoRegular;
+    font-weight: bold;
+}
+
 #screen {
     position:absolute;
     top:50%;
