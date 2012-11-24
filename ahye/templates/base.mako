@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>ah ye</title>
         ${self.head_css()}
+        ${self.extra_css()}
         ${self.head_js()}
     </head>
     <body>
@@ -17,6 +18,7 @@
             ${self.body_footer()}
         </div>
         ${self.footer_js()}
+        ${self.extra_js()}
         <div id="progress"></div>
         <a href="https://github.com/kopf/ahye" target="_new">
             <img style="position:absolute;top:0;right:0;border:0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
@@ -26,6 +28,9 @@
 
 <%def name="head_css()">
     <link rel="stylesheet" type="text/css" href="${url_for('static', filename='css/base.css')}" />
+</%def>
+
+<%def name="extra_css()">
 </%def>
 
 <%def name="head_js()">
@@ -77,4 +82,7 @@
         });
     });
     </script>
+</%def>
+
+<%def name="extra_js()">
 </%def>
