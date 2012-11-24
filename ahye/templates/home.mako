@@ -29,7 +29,7 @@
             <h2>Mirroring</h2>
             <p>To mirror a file, simply append its URL to the ahye server's URL.</p>
 
-            <p>For example, if you wanted to mirror the image at <a href="http://i.imgur.com/EHWlL.jpg" target="_new">http://i.imgur.com/EHWlL.jpg</a>, you would simply go to the url:</p>
+            <p>For example, if you wanted to mirror the image at <a href="http://i.imgur.com/EHWlL.jpg" target="_new">http://i.imgur.com/EHWlL.jpg</a>, you would simply go to:</p>
             <p class="example_url"><a href="${base_url}/http://i.imgur.com/EHWlL.jpg" target="_new">${base_url}/http://i.imgur.com/EHWlL.jpg</a></p>
             <p>You'll then be automatically redirected to the mirrored version of the image!</p>
         </div>
