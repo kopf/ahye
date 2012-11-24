@@ -29,6 +29,10 @@ body {
     display: none;
 }
 
+.text_shadow {
+    text-shadow: 2px 2px 2px #000;
+}
+
 .mirror_helplink {
     font-family: RobotoThin;
     font-weight: bold;
@@ -39,8 +43,19 @@ body {
 }
 
 .mirror_help {
-    font-family: RobotoRegular;
+    font-family: RobotoThin;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 20px;
+}
+.mirror_help h2 {
+    margin-top: 80px;
+}
+.mirror_help p {
     font-weight: bold;
+}
+.mirror_help p.example_url {
+    font-weight: normal !important;
 }
 
 #screen {

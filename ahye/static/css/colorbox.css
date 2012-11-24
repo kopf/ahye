@@ -21,15 +21,7 @@
 */
 #cboxOverlay{background:#000;}
 #colorbox{}
-    #cboxTopLeft{width:14px; height:14px; background:url(/static/img/colorbox/controls.png) no-repeat 0 0;}
-    #cboxTopCenter{height:14px; background:url(/static/img/colorbox/border.png) repeat-x top left;}
-    #cboxTopRight{width:14px; height:14px; background:url(/static/img/colorbox/controls.png) no-repeat -36px 0;}
-    #cboxBottomLeft{width:14px; height:43px; background:url(/static/img/colorbox/controls.png) no-repeat 0 -32px;}
-    #cboxBottomCenter{height:43px; background:url(/static/img/colorbox/border.png) repeat-x bottom left;}
-    #cboxBottomRight{width:14px; height:43px; background:url(/static/img/colorbox/controls.png) no-repeat -36px -32px;}
-    #cboxMiddleLeft{width:14px; background:url(/static/img/colorbox/controls.png) repeat-y -175px 0;}
-    #cboxMiddleRight{width:14px; background:url(/static/img/colorbox/controls.png) repeat-y -211px 0;}
-    #cboxContent{background:#fff; overflow:visible;}
+    #cboxContent{background:url(/static/img/background.png); overflow:visible;}
         .cboxIframe{background:#fff;}
         #cboxError{padding:50px; border:1px solid #ccc;}
         #cboxLoadedContent{margin-bottom:5px;}
