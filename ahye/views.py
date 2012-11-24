@@ -10,12 +10,12 @@ import requests
 from ahye import app
 from ahye.flaskext.mako import render_template as render
 from ahye.lib import generate_filename, get_file_extension, guess_file_extension
-from ahye.settings import VDIR, LOCAL_UPLOADS_DIR
+from ahye.settings import VDIR, LOCAL_UPLOADS_DIR, BASE_URL
 
 
 @app.route('/', methods=['GET'])
 def home():
-    return render('/home.mako')
+    return render('/home.mako', base_url=BASE_URL)
 
 
 @app.route('/upload', methods=['POST'])
@@ -103,4 +103,3 @@ def serve_favicon():
 @app.route('/robots.txt')
 def serve_robots():
     return redirect(url_for('static', filename='robots.txt'))
-
