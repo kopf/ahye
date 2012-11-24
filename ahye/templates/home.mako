@@ -6,7 +6,7 @@
         var html = "<b>here's how to do it</b>"
         $("#mirror_helplink").colorbox({
             "html": $(".mirror_help_container").html(),
-            "width": "440px",
+            "width": "500px",
             "height": "445px",
             "close": "<img src='${url_for('static', filename='img/colorbox/close.png')}' />"
         });
