@@ -23,6 +23,18 @@
 body {
     overflow-x: hidden;
     background-image: url('/static/img/background.png');
+    color: #9d9d9d;
+}
+
+a, a:visited, a:active, a:hover{
+    outline: 0;
+    text-decoration: none;
+}
+a, a:visited, a:active {
+    color: #9d9d9d;
+}
+a:hover {
+    color: #fff;
 }
 
 .hidden {
@@ -39,7 +51,6 @@ body {
     font-size: 20px;
     margin-top: 690px;
     margin-left: 500px;
-    color: #9d9d9d;
 }
 
 .mirror_help {
@@ -84,7 +95,6 @@ body {
     font-family: RobotoRegular;
     font-weight: bold;
     font-size: 44px;
-    color: #9d9d9d;
 }
 
 #screen .text_container .file {
@@ -92,13 +102,6 @@ body {
     height: 50px;
     margin-top: 12px;
     border-bottom: 2px #333 solid;
-}
-#screen a, #screen a:visited, #screen a:active {
-    text-decoration: none;
-    color: #9d9d9d;
-}
-#screen a:hover {
-    color: #fff;
 }
 #screen .file img {
     margin-right: 30px;

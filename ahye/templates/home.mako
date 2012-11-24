@@ -7,7 +7,8 @@
         $("#mirror_helplink").colorbox({
             "html": $(".mirror_help_container").html(),
             "width": "440px",
-            "height": "445px"
+            "height": "445px",
+            "close": "<img src='${url_for('static', filename='img/colorbox/close.png')}' />"
         });
     </script>
 </%def>
@@ -28,8 +29,8 @@
             <h2>Mirroring</h2>
             <p>To mirror a file, simply append its URL to the ahye server's URL.</p>
 
-            <p>For example, if you wanted to mirror the image at http://i.imgur.com/EHWlL.jpg, you would simply go to the url:</p>
-            <p class="example_url">${base_url}/http://i.imgur.com/EHWlL.jpg</p>
+            <p>For example, if you wanted to mirror the image at <a href="http://i.imgur.com/EHWlL.jpg" target="_new">http://i.imgur.com/EHWlL.jpg</a>, you would simply go to the url:</p>
+            <p class="example_url"><a href="${base_url}/http://i.imgur.com/EHWlL.jpg" target="_new">${base_url}/http://i.imgur.com/EHWlL.jpg</a></p>
             <p>You'll then be automatically redirected to the mirrored version of the image!</p>
         </div>
     </div>
