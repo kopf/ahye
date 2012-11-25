@@ -15,7 +15,7 @@ from ahye.settings import VDIR, LOCAL_UPLOADS_DIR, BASE_URL
 
 @app.route('/', methods=['GET'])
 def home():
-    return render('/home.mako', base_url=BASE_URL)
+    return render('/home.mako', base_url=BASE_URL.strip('/'))
 
 
 @app.route('/upload', methods=['POST'])
