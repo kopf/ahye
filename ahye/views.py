@@ -1,7 +1,7 @@
+import hashlib
 import os
 import json
 import urlparse
-import uuid
 
 from flask import (abort, redirect, request, jsonify,
                    send_from_directory, url_for)
@@ -62,7 +62,7 @@ def crossload(url):
     elif url.startswith('https:/') and not url.startswith('https://'):
         url = url.replace('https:/', 'https://')
 
-    filename = '%s%s' % (uuid.uuid3(uuid.NAMESPACE_DNS, str(url)),
+    filename = '%s%s' % (hashlib.md5(str(url)).hexdigest(),
                          guess_file_extension(url))
 
     parsed_url = urlparse.urlparse(url)
