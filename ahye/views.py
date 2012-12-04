@@ -62,7 +62,7 @@ def crossload(url):
     elif url.startswith('https:/') and not url.startswith('https://'):
         url = url.replace('https:/', 'https://')
 
-    filename = '%s%s' % (hashlib.md5(str(url)).hexdigest(),
+    filename = '%s%s' % (hashlib.md5(url.encode('utf-8')).hexdigest(),
                          guess_file_extension(url))
 
     parsed_url = urlparse.urlparse(url)
