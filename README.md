@@ -7,12 +7,12 @@ It also features a web interface that supports uploading and mirroring images.
 
 ### Windows
 
-The Windows gyazo client is open source and [available on github.](https://github.com/gyazo/Gyazo-for-Linux/blob/master/gyazo)
+The Windows gyazo client is open source and [available on github.](https://github.com/gyazo/Gyazowin)
 Simply change [the server address](https://github.com/gyazo/Gyazowin/blob/11152a5c3a5fe85f702c87cdd1a3f814f90f8218/gyazowin/gyazowin.cpp#L794) and recompile.
 
 ### Linux
 
-A gyazo client for Linux is [available here](https://github.com/masui/gyazo-ruby). Written in ruby, 
+A gyazo client for Linux is [available here](https://github.com/gyazo/Gyazo-for-Linux). Written in ruby, 
 you'll need to [change the server address here](https://github.com/gyazo/Gyazo-for-Linux/blob/master/gyazo#L37) any then you're good to go.
 
 ### OS X
