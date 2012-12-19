@@ -27,6 +27,7 @@ def get_file_extension(image_data):
         return '.png'
 
 def guess_file_extension(url):
+    """ Used by the image mirroring service """
     url = url.lower()
     if '.jpg' in url or '.jpeg' in url:
         return '.jpg'
@@ -34,5 +35,7 @@ def guess_file_extension(url):
         return '.gif'
     elif '.png' in url:
         return '.png'
+    elif '.svg' in url:
+        return '.svg'
     else:
         return '.jpg'
