@@ -1,7 +1,7 @@
+import hashlib
 import os
 import json
 import urlparse
-import uuid
 
 from flask import (abort, redirect, request, jsonify,
                    send_from_directory, url_for)
@@ -10,12 +10,12 @@ import requests
 from ahye import app
 from ahye.flaskext.mako import render_template as render
 from ahye.lib import generate_filename, get_file_extension, guess_file_extension
-from ahye.settings import VDIR, LOCAL_UPLOADS_DIR
+from ahye.settings import VDIR, LOCAL_UPLOADS_DIR, BASE_URL
 
 
 @app.route('/', methods=['GET'])
 def home():
-    return render('/home.mako')
+    return render('/home.mako', base_url=BASE_URL.strip('/'))
 
 
 @app.route('/upload', methods=['POST'])
@@ -62,7 +62,7 @@ def crossload(url):
     elif url.startswith('https:/') and not url.startswith('https://'):
         url = url.replace('https:/', 'https://')
 
-    filename = '%s%s' % (uuid.uuid3(uuid.NAMESPACE_DNS, str(url)),
+    filename = '%s%s' % (hashlib.md5(url.encode('utf-8')).hexdigest(),
                          guess_file_extension(url))
 
     parsed_url = urlparse.urlparse(url)
@@ -99,7 +99,7 @@ def crossload(url):
 def serve_favicon():
     return redirect(url_for('static', filename='favicon.ico'))
 
+
 @app.route('/robots.txt')
 def serve_robots():
     return redirect(url_for('static', filename='robots.txt'))
-
