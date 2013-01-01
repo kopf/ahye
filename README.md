@@ -17,7 +17,12 @@ you'll need to [change the server address here](https://github.com/gyazo/Gyazo-f
 
 ### OS X
 
-A mac client, also written in ruby, is [available here](https://github.com/masui/gyazo-ruby). Just [change the server address here](https://github.com/masui/gyazo-ruby/blob/c62a06a70b8a1de602e245a46b0d5d70b9615f22/lib/gyazo.rb#L32).
+To use your ahye server with an OS X client, simply download the OS X client from [the official gyazo
+website](http://www.gyazo.com). Then, edit `/Applications/Gyazo.app/Contents/Resources/script` with your favourite
+editor, changing the `HOST` and `CGI` variables to point to your ahye server's upload endpoint.
+
+You can also change the program's icon by following [these instructions](http://superuser.com/a/37813/90167) and using the icon [provided in the ahye
+repository here](https://github.com/kopf/ahye/blob/master/ahye/static/progicon32.ico)
 
 ## Web interface
 
