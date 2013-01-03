@@ -29,7 +29,7 @@ repository here](https://github.com/kopf/ahye/blob/master/ahye/static/progicon32
 ### Drag-and-drop uploads
 
 To upload an image file you've already saved on your computer, just visit your ahye website and drag the image into the browser window. 
-The file will automatically upload.
+The file will automatically upload. You can also drag-and-upload multiple files at once for batch uploads.
 
 ### Mirroring
 
