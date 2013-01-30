@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="ahye icon" href="/static/favicon.ico" />
         <title>ah ye</title>
         ${self.head_css()}
         ${self.extra_css()}
