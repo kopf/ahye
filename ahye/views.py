@@ -52,6 +52,9 @@ def serve_upload(filename):
 
 @app.route('/<path:url>')
 def crossload(url):
+    if not url.startswith('http:/') and not url.startswith('https:/'):
+        abort(404)
+
     # reconstruct url (query string has been stripped from url by flask)
     if request.query_string:
         url = '%s?%s' % (url, request.query_string)
