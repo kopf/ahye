@@ -98,6 +98,11 @@ def crossload(url):
     return redirect(url_for('serve_upload', filename=filename, _external=True))
 
 
+@app.route('/favicon.ico')
+def serve_favicon():
+    return redirect(url_for('static', filename='favicon.ico'))
+
+
 @app.route('/robots.txt')
 def serve_robots():
     return redirect(url_for('static', filename='robots.txt'))
