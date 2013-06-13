@@ -1,7 +1,7 @@
 import hashlib
 import os
 import json
-import urlparse
+import urllib.request, urllib.parse, urllib.error
 
 from flask import (abort, redirect, request, jsonify,
                    send_from_directory, url_for)
@@ -32,7 +32,7 @@ def webupload():
     for newimg in request.files.getlist('files[]'):
         data = newimg.stream.read()
         filename = generate_filename(data)
-        with open(os.path.join(LOCAL_UPLOADS_DIR, filename), 'w') as f:
+        with open(os.path.join(LOCAL_UPLOADS_DIR, filename), 'wb') as f:
             f.write(data)
         retval.append({
             "name":filename,
@@ -68,7 +68,7 @@ def crossload(url):
     filename = '%s%s' % (hashlib.md5(url.encode('utf-8')).hexdigest(),
                          guess_file_extension(url))
 
-    parsed_url = urlparse.urlparse(url)
+    parsed_url = urllib.parse.urlparse(url)
     auth = (parsed_url.username, parsed_url.password)
 
     if not os.path.exists(os.path.join(LOCAL_UPLOADS_DIR, filename)):
@@ -91,7 +91,7 @@ def crossload(url):
             return render('/error.mako')
 
         if 200 <= conn.status_code <= 300:
-            with open(os.path.join(LOCAL_UPLOADS_DIR, filename), 'w') as f:
+            with open(os.path.join(LOCAL_UPLOADS_DIR, filename), 'wb') as f:
                 f.write(conn.content)
         else:
             return render('/error.mako', error={'code': conn.status_code})

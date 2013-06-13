@@ -10,4 +10,4 @@ __homepage__ = 'https://github.com/kopf/ahye-server'
 
 app = Flask(__name__)
 
-import views
+from . import views

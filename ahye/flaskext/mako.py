@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
+
 from mako.lookup import TemplateLookup
 from mako.template import Template
 from flask import request, session, get_flashed_messages, url_for, g
@@ -15,13 +15,13 @@ def init_mako(app, **kw):
     def get_first(dicts, keys, default=None):
         # look in one or more dictionaries returning the first found value
         for d in dicts:
-            found = filter(lambda x: x in d, keys)
+            found = [x for x in keys if x in d]
             if found:
                 return d[found[0]]
         return default
     
     dirs = get_first([kw, app.config],
-                     map(lambda x: 'MAKO_%s' % x, ('DIRS', 'DIRECTORIES', 'DIR', 'DIRECTORY')),
+                     ['MAKO_%s' % x for x in ('DIRS', 'DIRECTORIES', 'DIR', 'DIRECTORY')],
                      default='.')
     if type(dirs) == str:
         dirs = dirs.split(' ')
@@ -48,7 +48,7 @@ def render_template(path, **kw):
     """
     try:
         render = _request_ctx_stack.top._mako_lookup.get_template(path).render
-    except AttributeError, e:
+    except AttributeError as e:
         from flask import render_template
         return render_template(path, **kw)
     else:

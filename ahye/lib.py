@@ -1,4 +1,4 @@
-import magic
+#import magic
 import os
 import random
 import string
@@ -18,13 +18,14 @@ def generate_filename(image_data, detect_extension=True):
     return retval
 
 def get_file_extension(image_data):
-    s = magic.from_buffer(image_data)
-    if s.startswith('JPEG'):
-        return '.jpg'
-    elif s.startswith('GIF'):
-        return '.gif'
-    elif s.startswith('PNG'):
-        return '.png'
+    #s = magic.from_buffer(image_data)
+    #if s.startswith('JPEG'):
+    #    return '.jpg'
+    #elif s.startswith('GIF'):
+    #    return '.gif'
+    #elif s.startswith('PNG'):
+    #    return '.png'
+    return '.png'
 
 def guess_file_extension(url):
     """ Used by the image mirroring service """
