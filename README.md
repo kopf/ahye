@@ -9,7 +9,7 @@ It also features a web interface that supports uploading and mirroring images.
 
 A multi-platform python client can be found at https://github.com/kopf/ahye-clients
 
-### Precompiled Windows Binaries
+### Windows
 
 The Windows gyazo client is open source and [available on github.](https://github.com/gyazo/Gyazowin)
 Simply change [the server address](https://github.com/gyazo/Gyazowin/blob/11152a5c3a5fe85f702c87cdd1a3f814f90f8218/gyazowin/gyazowin.cpp#L794) and recompile.
