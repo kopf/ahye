@@ -5,24 +5,14 @@ It also features a web interface that supports uploading and mirroring images.
 
 ## Desktop Clients
 
+### Multi-platform
+
+A multi-platform python client can be found at https://github.com/kopf/ahye-clients
+
 ### Windows
 
 The Windows gyazo client is open source and [available on github.](https://github.com/gyazo/Gyazowin)
 Simply change [the server address](https://github.com/gyazo/Gyazowin/blob/11152a5c3a5fe85f702c87cdd1a3f814f90f8218/gyazowin/gyazowin.cpp#L794) and recompile.
-
-### Linux
-
-A gyazo client for Linux is [available here](https://github.com/gyazo/Gyazo-for-Linux). Written in ruby, 
-you'll need to [change the server address here](https://github.com/gyazo/Gyazo-for-Linux/blob/master/gyazo#L37) any then you're good to go.
-
-### OS X
-
-To use your ahye server with an OS X client, simply download the OS X client from [the official gyazo
-website](http://www.gyazo.com). Then, edit `/Applications/Gyazo.app/Contents/Resources/script` with your favourite
-editor, changing the `HOST` and `CGI` variables to point to your ahye server's upload endpoint.
-
-You can also change the program's icon by following [these instructions](http://superuser.com/a/37813/90167) and using the icon [provided in the ahye
-repository here](https://github.com/kopf/ahye/blob/master/ahye/static/progicon32.ico)
 
 ## Web interface
 
