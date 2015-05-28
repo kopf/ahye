@@ -20,13 +20,4 @@ except IOError:
     pass
 
 from ahye import app as application
-from ahye.settings import DEBUG
-from ahye.flaskext.mako import init_mako
 
-application.config.update({
-    'MAKO_DIR': os.path.join(os.environ['OPENSHIFT_HOMEDIR'], 'app-root', 'repo', 'ahye', 'templates'),
-    'MAKO_CACHEDIR': '/tmp',
-    'MAKO_CACHESIZE': 500,
-    'DEBUG': True
-})
-init_mako(application)
