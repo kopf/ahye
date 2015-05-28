@@ -3,19 +3,18 @@ import os
 import json
 import urlparse
 
-from flask import (abort, redirect, request, jsonify,
-                   send_from_directory, url_for)
+from flask import (abort, redirect, request, send_from_directory, url_for,
+                   render_template as render)
 import requests
 
 from ahye import app
-from ahye.flaskext.mako import render_template as render
-from ahye.lib import generate_filename, get_file_extension, guess_file_extension
+from ahye.lib import generate_filename, guess_file_extension
 from ahye.settings import VDIR, LOCAL_UPLOADS_DIR, BASE_URL
 
 
 @app.route('/', methods=['GET'])
 def home():
-    return render('/home.mako', base_url=BASE_URL.strip('/'))
+    return render('/home.html', base_url=BASE_URL.strip('/'))
 
 
 @app.route('/upload', methods=['POST'])
@@ -75,26 +74,26 @@ def crossload(url):
         try:
             conn = requests.get(url, auth=auth, verify=False)
         except requests.exceptions.ConnectionError:
-            return render('/error.mako',
+            return render('/error.html',
                           error={'msgs': ['Connection to server failed.',
                                           'Is it a valid domain?']})
         except (requests.exceptions.InvalidSchema,
                 requests.exceptions.MissingSchema,
                 requests.exceptions.InvalidURL):
-            return render('/error.mako',
+            return render('/error.html',
                           error={'msgs': ['Invalid URL.',
                                           'Please check and try again.']})
         except requests.exceptions.Timeout:
-            return render('/error.mako',
+            return render('/error.html',
                           error={'msgs': ['Connection to server timed out.']})
         except Exception:
-            return render('/error.mako')
+            return render('/error.html')
 
         if 200 <= conn.status_code <= 300:
             with open(os.path.join(LOCAL_UPLOADS_DIR, filename), 'w') as f:
                 f.write(conn.content)
         else:
-            return render('/error.mako', error={'code': conn.status_code})
+            return render('/error.html', error={'code': conn.status_code})
     return redirect(url_for('serve_upload', filename=filename, _external=True))
 
 
