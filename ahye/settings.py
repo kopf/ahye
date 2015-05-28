@@ -1,6 +1,6 @@
 import os
 
-DEBUG = True
+DEBUG = False
 VDIR = 's'
-LOCAL_UPLOADS_DIR = os.path.join(os.path.abspath(os.path.curdir), 'ahye/static/uploads')
-BASE_URL = 'http://192.168.92.80' # Used in documentation
+LOCAL_UPLOADS_DIR = os.environ['OPENSHIFT_DATA_DIR']
+BASE_URL = 'http://ahye.zzzz.io' # Used in documentation
