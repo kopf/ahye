@@ -6,7 +6,9 @@
                 {% if error.get('code') %}
                     The remote server returned a
                 {% elif error.get('msgs') %}
-                    {{'<br>'.join(error['msgs'])}}
+                    {% for msg in error['msgs'] %}
+                        {{ msg }}<br>
+                    {% endfor %}
                 {% else %}
                     An unknown error occured.
                 {% endif %}
